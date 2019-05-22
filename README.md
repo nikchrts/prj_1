@@ -13,5 +13,5 @@
 - Publish a custom message with odometry value and type of source
 
 ## Files
-- bag_class.cpp:
+- **bag_class.cpp**:
   Includes a class which retrieves the data from the bag in a synchronous way using message_filters' ApproximateTime policy. Using a dynamic configurable parameter, the odometry method is selected and the corresponding parameters (ω, v and R) are computed. Finally, these parameters are published to a topic via custom message.
