@@ -15,3 +15,5 @@
 ## Files
 - **bag_class.cpp**:
   Includes a class which retrieves the data from the bag in a synchronous way using message_filters' ApproximateTime policy. Using a dynamic configurable parameter, the odometry method is selected and the corresponding parameters (ω, v and R) are computed. Finally, these parameters are published to a topic via custom message.
+- **sub_bag_pol.cpp**:
+Initial version of the aforementioned implementation without a class. DEPRECATED, used only as reference! 
