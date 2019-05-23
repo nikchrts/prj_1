@@ -1,8 +1,8 @@
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
-#include "prj_bag/odomParam.h"
-#include <prj_bag/odom_typeConfig.h>
+#include "prj_1/odomParam.h"
+#include <prj_1/odom_typeConfig.h>
 #include <dynamic_reconfigure/server.h>
 
 class odom_sub_pub{
@@ -17,7 +17,7 @@ class odom_sub_pub{
             server.setCallback(f);
         }
 
-    void odomCallback(const prj_bag::odomParam::ConstPtr& msg){
+    void odomCallback(const prj_1::odomParam::ConstPtr& msg){
         ome = msg->omega;
         vel = msg->velocity;
 
@@ -35,7 +35,7 @@ class odom_sub_pub{
         last_time = current_time;
     }
 
-    void resetCallback(prj_bag::odom_typeConfig &config, uint32_t level) {
+    void resetCallback(prj_1::odom_typeConfig &config, uint32_t level) {
         if (level == 3){
             ROS_INFO("The car was placed at the position (%f,%f)", config.x, config.y);
             x = config.x;
@@ -63,8 +63,8 @@ class odom_sub_pub{
 
         ros::Time current_time, last_time;
 
-        dynamic_reconfigure::Server<prj_bag::odom_typeConfig> server;
-        dynamic_reconfigure::Server<prj_bag::odom_typeConfig>::CallbackType f;
+        dynamic_reconfigure::Server<prj_1::odom_typeConfig> server;
+        dynamic_reconfigure::Server<prj_1::odom_typeConfig>::CallbackType f;
 
         // initial conditions
         double x = 0;

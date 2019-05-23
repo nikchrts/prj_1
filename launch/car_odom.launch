@@ -1,4 +1,4 @@
 <launch>
-    <node pkg="prj_bag" type="bag_class" name="bag_retrieval" output="screen"/>
-    <node pkg="prj_bag" type="pub_odom" name="pub_odom" output="screen"/>
+    <node pkg="prj_1" type="bag_class" name="bag_retrieval" output="screen"/>
+    <node pkg="prj_1" type="pub_odom" name="pub_odom" output="screen"/>
 </launch>
