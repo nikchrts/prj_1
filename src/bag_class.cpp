@@ -27,7 +27,7 @@ class Node{
         }
 
     void callback(const prj_bag::floatStamped::ConstPtr& vL, const prj_bag::floatStamped::ConstPtr& vR, const prj_bag::floatStamped::ConstPtr& theta){
-        msg.theta = theta->data/18;
+        msg.theta = theta->data/18*3.14159/180;  // from degrees to rad
         if (type == 0){
             omega = (vR->data-vL->data)/1.3;
             velocity = (vR->data+vL->data)/2;
@@ -37,18 +37,14 @@ class Node{
             omega = (vR->data+vL->data)/2/radius;
             velocity = omega*radius;
         }
-        ROS_INFO("%f", omega);
 
-        //msg.type = 0;
         msg.omega = omega;
         msg.velocity = velocity;
-        msg.theta = theta->data/18;
         pub.publish(msg);          
     }   
 
     void typeCallback(prj_bag::odom_typeConfig &config, uint32_t level) {
         type = config.type;
-        ROS_INFO("%d", type);
         if (config.type == 0){
             ROS_INFO("Differential is selected");
         }

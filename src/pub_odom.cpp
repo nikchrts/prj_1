@@ -22,13 +22,10 @@ class odom_sub_pub{
         vel = msg->velocity;
 
         current_time = ros::Time::now();
-
         dt = (current_time - last_time).toSec();
         x += vel*dt*cos(th);
         y += vel*dt*sin(th);
         th += ome*dt;
-
-        // ROS_INFO("%f   %f   %f", x, y, th);
 
         transform.setOrigin(tf::Vector3(x, y, 0));
         q.setRPY(0, 0, th);
@@ -39,10 +36,12 @@ class odom_sub_pub{
     }
 
     void resetCallback(prj_bag::odom_typeConfig &config, uint32_t level) {
-        ROS_INFO("%d", level);
         if (level == 3){
+            ROS_INFO("The car was placed at the position (%f,%f)", config.x, config.y);
             x = config.x;
             y = config.y;
+            config.x = 0;
+            config.y = 0;
         }
         else if (level == 2){
             if (config.reset == 1){
