@@ -19,12 +19,12 @@
 Using Euler integration, the pose (x, y, θ) is computed for every time instant. A tf transformation is then used between the frames "world" and "car".
 
 ## How to use it
-- place all the files in the relative direcotry (catki workspace)/src/prj_bag
+- download the zip file, extract its contents into a 'prj_1' folder and place it inside the `src` folder of your catkin workspace
 - open the terminal and run in different windows/tabs:
   - `roscore`
   - `rosbag play -l (path to bag_1.bag/bag_2.bag)`
-  - `rosrun prj_bag bag_class`
-  - `rosrun prj_bag pub_odom`
+  - `rosrun prj_1 bag_class`
+  - `rosrun prj_1 pub_odom`
   - to view the tf: `rviz` and select 'add' to add a TF and change the 'fixed frame' (eg to 'world')
 - parameters can be changed dynamically using:
   `rosrun dynamic_reconfigure dynparam set /(node name) (value)`
