@@ -2,7 +2,7 @@
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
 #include "prj_bag/odomParam.h"
-// #include <prj_bag/odom_typeConfig.h>
+#include <prj_bag/odom_typeConfig.h>
 #include <dynamic_reconfigure/server.h>
 
 class odom_sub_pub{
@@ -11,16 +11,15 @@ class odom_sub_pub{
             current_time = ros::Time::now();
             last_time = ros::Time::now();
             sub = n.subscribe("odomParam", 1000, &odom_sub_pub::odomCallback, this);
-
+            
             // set up dynamic configuration
-            // f = boost::bind(&odom_sub_pub::resetCallback, this, _1, _2);
-            // server.setCallback(f);
+            f = boost::bind(&odom_sub_pub::resetCallback, this, _1, _2);
+            server.setCallback(f);
         }
 
     void odomCallback(const prj_bag::odomParam::ConstPtr& msg){
         ome = msg->omega;
         vel = msg->velocity;
-        th = msg->theta;
 
         current_time = ros::Time::now();
 
@@ -29,7 +28,7 @@ class odom_sub_pub{
         y += vel*dt*sin(th);
         th += ome*dt;
 
-        //ROS_INFO("%f   %f   %f", x, y, th);
+        // ROS_INFO("%f   %f   %f", x, y, th);
 
         transform.setOrigin(tf::Vector3(x, y, 0));
         q.setRPY(0, 0, th);
@@ -39,14 +38,21 @@ class odom_sub_pub{
         last_time = current_time;
     }
 
-    // void resetCallback(prj_bag::odom_typeConfig &config, uint32_t level) {
-    //     // reset = config.reset;
-    //     ROS_INFO("%d", config.reset);
-    //     if (config.reset == 0){
-    //         ROS_INFO("Got in");
-    //         config.reset = 2;
-    //     }
-    // }
+    void resetCallback(prj_bag::odom_typeConfig &config, uint32_t level) {
+        ROS_INFO("%d", level);
+        if (level == 3){
+            x = config.x;
+            y = config.y;
+        }
+        else if (level == 2){
+            if (config.reset == 1){
+                ROS_INFO("Reset car to position (0,0)");
+                x = 0;
+                y = 0;
+                config.reset = 0;
+            }
+        }
+    }
 
     private:
         ros::NodeHandle n;
@@ -58,8 +64,8 @@ class odom_sub_pub{
 
         ros::Time current_time, last_time;
 
-        // dynamic_reconfigure::Server<prj_bag::odom_typeConfig> server;
-        // dynamic_reconfigure::Server<prj_bag::odom_typeConfig>::CallbackType f;
+        dynamic_reconfigure::Server<prj_bag::odom_typeConfig> server;
+        dynamic_reconfigure::Server<prj_bag::odom_typeConfig>::CallbackType f;
 
         // initial conditions
         double x = 0;

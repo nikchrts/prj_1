@@ -204,13 +204,6 @@ include_directories( include ${catkin_INCLUDE_DIRS}
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-
-add_executable(sub_bag_pol src/sub_bag_pol.cpp)
-add_dependencies(sub_bag_pol ${PROJECT_NAME}_gencfg)
-add_dependencies(sub_bag_pol ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(sub_bag_pol ${catkin_LIBRARIES})
-
 add_executable(bag_class src/bag_class.cpp)
 add_dependencies(bag_class ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(bag_class ${catkin_LIBRARIES})

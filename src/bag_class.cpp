@@ -27,20 +27,22 @@ class Node{
         }
 
     void callback(const prj_bag::floatStamped::ConstPtr& vL, const prj_bag::floatStamped::ConstPtr& vR, const prj_bag::floatStamped::ConstPtr& theta){
+        msg.theta = theta->data/18;
         if (type == 0){
             omega = (vR->data-vL->data)/1.3;
             velocity = (vR->data+vL->data)/2;
         }
         else{
-            omega = 0;
-            velocity = 0;
+            radius = 1.765/tan(msg.theta);
+            omega = (vR->data+vL->data)/2/radius;
+            velocity = omega*radius;
         }
+        ROS_INFO("%f", omega);
 
-        msg.type = 0;
+        //msg.type = 0;
         msg.omega = omega;
         msg.velocity = velocity;
         msg.theta = theta->data/18;
-        ROS_INFO("%f", msg.theta);
         pub.publish(msg);          
     }   
 
@@ -75,7 +77,7 @@ class Node{
         
         // odometry parameters
         int type;
-        double omega, velocity;
+        double omega, velocity, radius;
         prj_bag::odomParam msg;
     };
 
