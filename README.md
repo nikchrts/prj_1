@@ -18,8 +18,7 @@ Nikolaos Chairetis, 916092
 - Publish a custom message with odometry value and type of source
 
 ## Files
-For this project, we created 5 files; one for the dynamic reconfiguration, one launch file, two files related with custom messages and one C++ file, in which our node exists  
-*Configuration Parameters*  
+For this project, we created 5 files; one for the dynamic reconfiguration, one launch file, two files related with custom messages and one C++ file, in which our node exists<br><br> 
 **odom_param.cfg**:
 - **car_odom.launch**:
 - **floatStamped.msg**:
