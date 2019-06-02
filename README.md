@@ -57,6 +57,8 @@ To change dynamically the parameters:
 - reset (place car in (0,0) position): `rosrun dynamic_reconfigure dynparam set /odom_car reset 1`
 - specific (x,y) position: `rosrun dynamic_reconfigure dynparam set /odom_car "{x:(value1), y:(value2)}"`, where (value1) correspongs to the value of X value and (value2) to that of Y
 
+![tf-tree](https://raw.githubusercontent.com/nikchrts/prj_1/master/tf_tree.png)
+
 ## Further Considerations
 * The bag should be manually executed in order the demonstration of the project to be meaningful.
 * Our interprentation for the reset and the (x,y) position configuration is to only change accordingly the position of the car and all the other variables to remain exactly the same. That means that the car will be moved to the desired position and it will start moving to a different circular trajectory than the initial one, since the rest of the variables (eg yaw angle) do not experience a change.
