@@ -19,7 +19,7 @@ Nikolaos Chairetis, 916092
 
 ## Files
 For this project, we created 5 files; one for the dynamic reconfiguration, one launch file, two files related with custom messages and one C++ file, in which our node exists
-# Configuration Parameters
+### Configuration Parameters
 **odom_param.cfg**:
 - **car_odom.launch**:
 - **floatStamped.msg**:
