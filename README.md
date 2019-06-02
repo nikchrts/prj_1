@@ -18,10 +18,17 @@ Nikolaos Chairetis, 916092
 - Publish a custom message with odometry value and type of source
 
 ## Files
-For this project, we created 5 files; one for the dynamic reconfiguration, one launch file, two files related with custom messages and one C++ file, in which our node exists<br><br> 
-**odom_param.cfg**:
+For this project, we created 5 files; one for the dynamic reconfiguration, one launch file, two files related with custom messages and one C++ file, in which our node exists
+- **odom_param.cfg**:
+We used one enum integer parameter (*type*) for the different types of model, another integer parameter (*reset*) for the reset and two double parameters (*x* and *y*) that jointly define the desired reconfigurable position for the car. The different levels of each parameter let us recognise the actual parameter that will be dynamically reconfigured.
 - **car_odom.launch**:
+A very simple launch file, which just runs the only implemented node, along with the `roscore` command. Since each bag will be manually started during the test, there isn't anything else needed.
 - **floatStamped.msg**:
+This custom message is about the topic published from the bag. Specifically we use the topics `speedR_stamped`, `speedL_stamped` and `steer_stamped`. The custom message file includes:
+```
+Header header
+float64 data
+```
 - **odomCustom.msg**:
 - **bag_odom.cpp**:
   
