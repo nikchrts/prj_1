@@ -49,7 +49,9 @@ The actual odometry computation occurs inside the function *odometry*, which is 
 To integrate the project in your own workspace and run it properly, follow these simple steps:
 - by extracting the contents of the zip file, a 'prj_1' folder should be created
 - place it inside the `src` folder of your catkin workspace
-- open the terminal and type `roslaunch prj_1 car_odom.launch`<br>or alternatively, run manually `roscore` and then in another window/tab `rosrun prj_1 bag_odom`<br>Attention!! In order to get actual results, the bag should have been also executed.
+- next we have to make sure that the python .cfg file is executable. Inside the terminal, type `chmod +x /path_to_file_folder/odom_param.cfg`
+- next, cd to catkin workspace. As an intermediate step it's advisable to run as well `source devel/setup.bash`. Then compile the workspace, using `catkin_make`. Normally, there should be no errors.
+- and type `roslaunch prj_1 car_odom.launch`<br>or alternatively, run manually `roscore` and then in another window/tab `rosrun prj_1 bag_odom`<br>Attention!! In order to get actual results, the bag should have been also executed.
 
 To visualize the tf transformation:<br>in a separate window/tab: `rviz` and select 'add' to add a TF and change the 'fixed frame' to 'world'<br>
 To change dynamically the parameters:
