@@ -57,6 +57,7 @@ To change dynamically the parameters:
 - reset (place car in (0,0) position): `rosrun dynamic_reconfigure dynparam set /odom_car reset 1`
 - specific (x,y) position: `rosrun dynamic_reconfigure dynparam set /odom_car "{x:(value1), y:(value2)}"`, where (value1) correspongs to the value of X value and (value2) to that of Y
 
+<br> During the demonstration, the tf tree should normally be similar with the following image
 ![tf-tree](https://raw.githubusercontent.com/nikchrts/prj_1/master/tf_tree.png)
 
 ## Further Considerations
