@@ -53,7 +53,8 @@ To integrate the project in your own workspace and run it properly, follow these
 - next, cd to catkin workspace. As an intermediate step it's advisable to run as well `source devel/setup.bash`. Then compile the workspace, using `catkin_make`. Normally, there should be no errors.
 - and type `roslaunch prj_1 car_odom.launch`<br>or alternatively, run manually `roscore` and then in another window/tab `rosrun prj_1 bag_odom`<br>Attention!! In order to get actual results, the bag should have been also executed.
 
-To visualize the tf transformation:<br>in a separate window/tab: `rviz` and select 'add' to add a TF and change the 'fixed frame' to 'world'<br><br>
+To visualize the tf transformation:<br>
+  in a separate window/tab: `rviz` and select 'add' to add a TF and change the 'fixed frame' to 'world'<br><br>
 To change dynamically the parameters:
 - change odometry model: `rosrun dynamic_reconfigure dynparam set /odom_car type (value)`, where the (value) is set to 0 for Differential Drive Kinematics and 1 for Ackerman Model
 - reset (place car in (0,0) position): `rosrun dynamic_reconfigure dynparam set /odom_car reset 1`
