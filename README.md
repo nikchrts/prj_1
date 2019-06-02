@@ -1,4 +1,4 @@
-# Robotics Cource - Politecnico di Milano
+# Robotics Course - Politecnico di Milano
 
 ## Team Members
 Fabio Canazza, 920125  
