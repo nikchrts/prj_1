@@ -50,7 +50,7 @@ The actual odometry computation occurs inside the function *odometry*, which is 
 - place it inside the `src` folder of your catkin workspace
 - open the terminal and type `roslaunch prj_1 car_odom.launch`<br>or alternatively, run manually `roscore` and then in another window/tab `rosrun prj_1 bag_odom`<br>Attention!! In order to get actual results, the bag should have been also executed.
 
-<br><br>To visualize the tf transformation:<br>in a separate window/tab: `rviz` and select 'add' to add a TF and change the 'fixed frame' to 'world'
+To visualize the tf transformation:<br>in a separate window/tab: `rviz` and select 'add' to add a TF and change the 'fixed frame' to 'world'
   
   - parameters can be changed dynamically using:
   `rosrun dynamic_reconfigure dynparam set /(node name) (value)`
