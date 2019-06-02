@@ -12,8 +12,14 @@
   2. reset odometry to (0,0) or set to a specific (x,y) starting point
 - Publish a custom message with odometry value and type of source
 
+## Team Members
+* Fabio Canazza, 920125
+* Giacomo Bertollino, 919979
+* Nikolaos Chairetis, 916092
+
 ## Files
-- **bag_class.cpp**:
+- **bag_odom.cpp**:
+  
   Includes a class which retrieves the data from the bag in a synchronous way using message_filters' ApproximateTime policy. Using a dynamic configurable parameter, the odometry method is selected and the corresponding parameters (ω, v and R) are computed. Finally, these parameters are published to a topic via custom message.
 - **pub_odom.cpp**:
 Using Euler integration, the pose (x, y, θ) is computed for every time instant. A tf transformation is then used between the frames "world" and "car".
