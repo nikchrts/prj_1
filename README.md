@@ -1,5 +1,10 @@
 # Robotics Cource - Politecnico di Milano
 
+## Team Members
+Fabio Canazza, 920125  
+Giacomo Bertollino, 919979  
+Nikolaos Chairetis, 916092
+
 ## Goals
 - Two different odometry methods: 
   1. Differential Drive Kinematics
@@ -12,12 +17,13 @@
   2. reset odometry to (0,0) or set to a specific (x,y) starting point
 - Publish a custom message with odometry value and type of source
 
-## Team Members
-Fabio Canazza, 920125  
-Giacomo Bertollino, 919979  
-Nikolaos Chairetis, 916092
-
 ## Files
+For this project, we created 5 files; one for the dynamic reconfiguration, one launch file, two files related with custom messages and one C++ file, in which our node exists
+# Configuration Parameters
+**odom_param.cfg**:
+- **car_odom.launch**:
+- **floatStamped.msg**:
+- **odomCustom.msg**:
 - **bag_odom.cpp**:
   
   Includes a class which retrieves the data from the bag in a synchronous way using message_filters' ApproximateTime policy. Using a dynamic configurable parameter, the odometry method is selected and the corresponding parameters (ω, v and R) are computed. Finally, these parameters are published to a topic via custom message.
