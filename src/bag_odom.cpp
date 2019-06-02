@@ -41,11 +41,13 @@ class Node{
         if (type_id == 0){
             omega = (vR->data-vL->data)/1.3;
             velocity = (vR->data+vL->data)/2;
+            ROS_INFO("Diff");
         }
         else{
             radius = 1.765/tan(th_rad);
             omega = (vR->data+vL->data)/2/radius;
             velocity = omega*radius;
+            ROS_INFO("Acker");
         }
 
         Node::odometry(velocity, omega);       
