@@ -59,4 +59,5 @@ To change dynamically the parameters:
 
 ## Further Considerations
 * The bag should be manually executed in order the demonstration of the project to be meaningful.
-* Our interprentation for the reset and the (x,y) position configuration is to only change accordingly the position of the car and all the other variables to remain exactly the same.
+* Our interprentation for the reset and the (x,y) position configuration is to only change accordingly the position of the car and all the other variables to remain exactly the same. That means that the car will be moved to the desired position and it will start moving to a different circular trajectory than the initial one, since the rest of the variables (eg yaw angle) do not experience a change.
+* The car is moving initially using the Differential Drive Kinematics. 
