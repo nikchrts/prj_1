@@ -95,7 +95,7 @@ generate_messages(DEPENDENCIES
 #   cfg/DynReconf2.cfg
 # )
 generate_dynamic_reconfigure_options(
-  cfg/odom_type.cfg
+  cfg/odom_param.cfg
 )
 
 ###################################

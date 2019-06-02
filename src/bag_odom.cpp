@@ -2,7 +2,7 @@
 #include "std_msgs/Float64.h"
 #include "prj_1/floatStamped.h"
 #include "prj_1/odomCustom.h"
-#include <prj_1/odom_typeConfig.h>
+#include <prj_1/odom_paramConfig.h>
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
@@ -48,18 +48,16 @@ class Node{
             velocity = omega*radius;
         }
 
-        Node::odometryTopic(velocity, omega);       
+        Node::odometry(velocity, omega);       
     }   
 
-    void odometryTopic(double velocity, double omega){
+    void odometry(double velocity, double omega){
         // compute pose parameters
         vx = velocity*cos(th);
         vy = velocity*sin(th);
 
         current_time = ros::Time::now();
         dt = (current_time - last_time).toSec();
-        // x += velocity*dt*cos(th);
-        // y += velocity*dt*sin(th);
         x += vx*dt;
         y += vy*dt;
         th += omega*dt;
@@ -112,7 +110,7 @@ class Node{
         last_time = current_time; 
     }
 
-    void dynamicCallback(prj_1::odom_typeConfig &config, uint32_t level) {
+    void dynamicCallback(prj_1::odom_paramConfig &config, uint32_t level) {
         if (level == 0){
             if (config.reset == 1){
                 ROS_INFO("Reset car to position (0,0)");
@@ -151,8 +149,8 @@ class Node{
         boost::shared_ptr<Sync> sync;
 
         // dynamic configuration
-        dynamic_reconfigure::Server<prj_1::odom_typeConfig> server;
-        dynamic_reconfigure::Server<prj_1::odom_typeConfig>::CallbackType f_dyn;
+        dynamic_reconfigure::Server<prj_1::odom_paramConfig> server;
+        dynamic_reconfigure::Server<prj_1::odom_paramConfig>::CallbackType f_dyn;
 
         // compute and publish odometry
         tf::TransformBroadcaster br;
