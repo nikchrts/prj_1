@@ -13,7 +13,9 @@
 - Publish a custom message with odometry value and type of source
 
 ## Team Members
-Fabio Canazza, 920125  Giacomo Bertollino, 919979  Nikolaos Chairetis, 916092
+Fabio Canazza, 920125  
+Giacomo Bertollino, 919979  
+Nikolaos Chairetis, 916092
 
 ## Files
 - **bag_odom.cpp**:
