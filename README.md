@@ -53,6 +53,10 @@ To integrate the project in your own workspace and run it properly, follow these
 
 To visualize the tf transformation:<br>in a separate window/tab: `rviz` and select 'add' to add a TF and change the 'fixed frame' to 'world'<br>
 To change dynamically the parameters:
-- change odometry model (value: 0 for Differential, 1 for Ackerman): `rosrun dynamic_reconfigure dynparam set /odom_car type (value)`
+- change odometry model: `rosrun dynamic_reconfigure dynparam set /odom_car type (value)`, where the (value) is set to 0 for Differential Drive Kinematics and 1 for Ackerman Model
 - reset (place car in (0,0) position): `rosrun dynamic_reconfigure dynparam set /odom_car reset 1`
-- specific (x,y) position: `rosrun dynamic_reconfigure dynparam set /odom_car "{x:(value1), y:(value2)}"`
+- specific (x,y) position: `rosrun dynamic_reconfigure dynparam set /odom_car "{x:(value1), y:(value2)}"`, where (value1) correspongs to the value of X value and (value2) to that of Y
+
+## Further Considerations
+* The bag should be manually executed in order the demonstration of the project to be meaningful.
+* Our interprentation for the reset and the (x,y) position configuration is to only change accordingly the position of the car and all the other variables to remain exactly the same.
