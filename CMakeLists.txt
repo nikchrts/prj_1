@@ -52,7 +52,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
 add_message_files(FILES
-  odomParam.msg
+  odomCustom.msg
   floatStamped.msg
   )
 
@@ -204,10 +204,11 @@ include_directories( include ${catkin_INCLUDE_DIRS}
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(bag_class src/bag_class.cpp)
-add_dependencies(bag_class ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(bag_class ${catkin_LIBRARIES})
 
-add_executable(pub_odom src/pub_odom.cpp)
-add_dependencies(pub_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(pub_odom ${catkin_LIBRARIES})
+add_executable(bag_odom
+  src/bag_odom.cpp
+)
+add_dependencies(bag_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(bag_odom
+  ${catkin_LIBRARIES}
+)
